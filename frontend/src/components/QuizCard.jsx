@@ -1,10 +1,10 @@
 const QuizCard = ({ question, index, total, selected, onSelect }) => (
   <div className="card animate-fade-up">
-    <div className="flex items-center justify-between mb-2">
+    <div className="flex items-center justify-between mb-2 gap-2 flex-wrap">
       <p className="text-sm text-gray-400">
         Question {index + 1} of {total}
       </p>
-      <div className="flex gap-1">
+      <div className="flex gap-1 flex-wrap justify-end">
         {Array.from({ length: total }).map((_, i) => (
           <span
             key={i}
