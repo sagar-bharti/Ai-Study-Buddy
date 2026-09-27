@@ -17,8 +17,13 @@ connectDB();
 
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://ai-study-buddy3.netlify.app"
+];
+
 app.use(cors({
-  origin: "https://ai-study-buddys-git-main-sagar-bharti.vercel.app",
+  origin: allowedOrigins,
   credentials: true
 }));
 
