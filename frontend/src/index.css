@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  background-color: #f7f8fc;
+}
+
+.card {
+  @apply bg-white/90 backdrop-blur-sm rounded-2xl shadow-sm border border-gray-100/80 p-5 transition-all duration-300;
+}
+
+.card-hover {
+  @apply hover:shadow-lg hover:-translate-y-0.5;
+}
+
+.card-gradient {
+  @apply bg-gradient-card rounded-2xl border border-primary-100/60 p-5;
+}
+
+.btn-primary {
+  @apply relative overflow-hidden bg-gradient-brand text-white font-medium px-4 py-2.5 rounded-xl transition-all duration-300 shadow-md shadow-primary-500/20 hover:shadow-lg hover:shadow-primary-500/30 hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0;
+}
+
+.btn-secondary {
+  @apply bg-white hover:bg-gray-50 text-gray-700 font-medium px-4 py-2.5 rounded-xl border border-gray-200 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-sm;
+}
+
+.input {
+  @apply w-full border border-gray-200 rounded-xl px-4 py-2.5 bg-white/70 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent focus:bg-white;
+}
+
+.text-gradient {
+  @apply bg-gradient-brand bg-clip-text text-transparent;
+}
+
+.blob {
+  @apply absolute rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob;
+}
+
+.animate-stagger > * {
+  animation: fade-up 0.5s ease-out forwards;
+  opacity: 0;
+}
+.animate-stagger > *:nth-child(1) { animation-delay: 0.05s; }
+.animate-stagger > *:nth-child(2) { animation-delay: 0.1s; }
+.animate-stagger > *:nth-child(3) { animation-delay: 0.15s; }
+.animate-stagger > *:nth-child(4) { animation-delay: 0.2s; }
+.animate-stagger > *:nth-child(5) { animation-delay: 0.25s; }
+.animate-stagger > *:nth-child(6) { animation-delay: 0.3s; }
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
