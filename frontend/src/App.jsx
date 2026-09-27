@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
@@ -8,19 +9,24 @@ import TakeQuiz from "./pages/TakeQuiz.jsx";
 import StudyPlanner from "./pages/StudyPlanner.jsx";
 import ProgressPage from "./pages/Progress.jsx";
 import Profile from "./pages/Profile.jsx";
+import PublicProfile from "./pages/PublicProfile.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Sidebar from "./components/Sidebar.jsx";
 
-const AppLayout = ({ children }) => (
-  <div className="flex">
-    <Sidebar />
-    <div className="flex-1 min-h-screen">
-      <Navbar />
-      <main className="p-6">{children}</main>
+const AppLayout = ({ children }) => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  return (
+    <div className="flex">
+      <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      <div className="flex-1 min-h-screen min-w-0">
+        <Navbar onMenuClick={() => setSidebarOpen(true)} />
+        <main className="p-4 sm:p-6">{children}</main>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const Protected = ({ children }) => (
   <ProtectedRoute>
@@ -42,6 +48,7 @@ function App() {
       <Route path="/study-planner" element={<Protected><StudyPlanner /></Protected>} />
       <Route path="/progress" element={<Protected><ProgressPage /></Protected>} />
       <Route path="/profile" element={<Protected><Profile /></Protected>} />
+      <Route path="/users/:id" element={<Protected><PublicProfile /></Protected>} />
 
       <Route path="*" element={<Navigate to="/dashboard" replace />} />
     </Routes>
